@@ -32,8 +32,22 @@ function visualFor30s (){
     setTimeout(function(){
         var objToHide = document.getElementById("numeriRandom"); // memorizzo nella var il contenuto da rimuovere
         objToHide.remove();  // lo rimuovo dopo 30s
-    },30000);// Dopo 30 secondi, vengono rimossi i numeri dalla pagina
+    },32000);// Dopo 30 secondi, vengono rimossi i numeri dalla pagina
 }
+
+function countdownOnScreen () {
+    var timeleft = 30;
+var downloadTimer = setInterval(function(){
+  if(timeleft < 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Tempo Scaduto";
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " secondi";
+  }
+  timeleft -= 1;
+}, 1000);
+} // countdown on screen
+
 function askNumberAndVerifyPoints (){
     setTimeout(function(){
 
@@ -59,7 +73,7 @@ function askNumberAndVerifyPoints (){
         console.log('I numeri da indovinare e ricordare erano: ' + arrayRandom);
         console.log('hai indovinato ' + punteggio + ' numero/i');
         console.log('i numero/i indovinati sono: ' + arrayNumIndovinati);
-    },31000);
+    },33000);
 }
 
 
@@ -69,7 +83,7 @@ var arrayUtente = [];
 
 
 printNumRandom(); // stampo in pagina i num random
-// Da lì parte un timer di 30 secondi.
+countdownOnScreen (); // Da lì parte un timer di 30 secondi.
 visualFor30s(); // dopo 30 secondi i num random spariscono
 askNumberAndVerifyPoints (); // e l'utente deve inserire (tramite prompt) i numeri che ha visto precedentemente, uno alla volta. // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali numeri sono stati indovinati
 
